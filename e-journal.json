@@ -1,0 +1,158 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Index request of e-journals",
+  "description": "An e-journal indexing request",
+  "type": "object",
+  "properties": {
+    "@context": {
+      "type": "string",
+      "format": "uri",
+      "enum": [
+        "http://schema.org/"
+      ],
+      "_display": {
+        "className": "hidden"
+      }
+    },
+    "id": {
+      "title": "URL",
+      "type": "string",
+      "format": "uri"
+    },
+    "type": {
+      "title": "Type",
+      "type": "string",
+      "enum": [
+        "CreativeWork",
+        "Periodical",
+        "Newspaper"
+      ]
+    },
+    "name": {
+      "title": "Journal title",
+      "type": "string",
+      "_display": {
+        "rows": 2
+      }
+    },
+    "issn": {
+      "title": "ISSN",
+      "type": "string"
+    },
+    "datePublished": {
+      "title": "Year of first broadcast/publication",
+      "type": "string"
+    },
+    "publisher": {
+      "title": "Publisher",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "title": "Typ",
+            "type": "string",
+            "enum": [
+              "Organization"
+            ]
+          },
+          "id": {
+            "title": "URL",
+            "type": "string",
+            "format": "uri"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "location": {
+            "title": "Location",
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "type",
+          "location"
+        ]
+      }
+    },
+    "description": {
+      "title": "Description",
+      "type": "string",
+      "_display": {
+        "rows": 5
+      }
+    },
+    "about": {
+      "title": "Subject",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "Concept"
+            ]
+          },
+          "id": {
+            "type": "string",
+            "format": "uri"
+          },
+          "inScheme": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "enum": [
+                  "https://w3id.org/zdb/ddc/scheme"
+                ]
+              }
+            }
+          }
+        },
+        "required":  [
+          "inScheme",
+          "id",
+          "type"
+        ],
+        "_widget": "SkohubLookup"
+      }
+    },
+    "license": {
+      "title": "License",
+      "type": "object",
+      "_widget": "SkohubLookup",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "Concept"
+          ]
+        },
+        "id": {
+          "type": "string",
+          "format": "uri"
+        },
+        "inScheme": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "enum": [
+                "https://oerworldmap.org/assets/json/licenses/"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "required":  [
+    "id",
+    "name",
+    "about",
+    "publisher"
+  ]
+}
