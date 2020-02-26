@@ -153,6 +153,7 @@
     "id",
     "name",
     "about",
-    "publisher"
+    "publisher",
+    "datePublished"
   ]
 }
